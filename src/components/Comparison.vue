@@ -1,10 +1,9 @@
 <template>
 	<div id = "comparison-wrapper">
-		<SearchBar :arrayToSearch = "characterList" :propToSearchBy = "'name'"></SearchBar>
 
-		<div id = "comparison-menu-toggle" v-on:click = "displayMenu" :class = "menuIsVisible ? 'on' : ''"></div>
+		<div id = "comparison-menu-toggle" v-on:click = "displayMenu" :class = "menuIsVisible ? 'on hamburger-menu' : 'hamburger-menu'"></div>
 
-		<ul id = "comparison-menu" v-if="menuIsVisible">
+		<ul id = "comparison-menu" v-if="menuIsVisible" class = "toggle-menu">
 			<li v-for="character in characterList" v-on:click="setSelectedCharacter(character)" :class = "(character == selectedCharacter) ? 'selected' : ''">
 				{{ character.name }}
 			</li>
@@ -18,7 +17,6 @@
 
 <script>
 	import CharacterList from './../data/characters.js';
-	import SearchBar from './SearchBar.vue';
 	import ComparisonItem from './ComparisonItem.vue';
 
 	export default {
@@ -47,7 +45,6 @@
 		},
 
 		components: {
-			SearchBar,
 			ComparisonItem
 		}
 	}

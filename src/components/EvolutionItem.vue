@@ -1,15 +1,30 @@
 <template>
 	
 	<div class = "evolution-item-wrapper">
-		<button id = "toggle-view" class = "toggle-view-btn" v-on:click = "toggleView()">
+		<button class = "toggle-view toggle-view-btn" v-on:click = "toggleView()">
 			View: {{ (selectedView == 'select') ? 'Select' : 'Grid' }}
 		</button>
+
+		<button 
+			v-if = "selectedView == 'select'"
+			:class = "(displayItemSelectMenu) ? 'on hamburger-menu' : 'hamburger-menu'" 
+			v-on:click = "displayItemSelectMenu = !displayItemSelectMenu"
+		></button>
 		
 		<div v-if = "selectedView == 'select'" :style = "'background-image: url(\'' + getImage(selectedEvolutionItem.imageUrl) + '\');'" class="selected-item">
+
+			<span class = "year">{{ selectedEvolutionItem.year }}</span>
+
+			<button class = "prev ctrl" v-on:click = "navigatePrev">Prev</button>
+			<button class = "next ctrl" v-on:click = "navigateNext">Next</button>
+
 		</div>
 
-		<div :class = "(selectedView == 'select') ? 'evolution-inner-item-wrapper select' : 'evolution-inner-item-wrapper'">
-			<div v-for = "evolutionItem in character.evolution"
+		<ul 
+			v-if = "(selectedView != 'select' || displayItemSelectMenu)"
+			:class = "(selectedView == 'select') ? 'evolution-inner-item-wrapper select toggle-menu' : 'evolution-inner-item-wrapper'"
+		>
+			<li v-for = "(evolutionItem, index) in character.evolution"
 
 			:class = "(selectedView == 'select' && evolutionItem.id == selectedEvolutionItem.id) ? 'evolution-inner-item selected' : 'evolution-inner-item'"
 
@@ -17,20 +32,18 @@
 
 			:key = "evolutionItem.id"
 
-			v-on:click = "( selectedView == 'select' ) ? setSelectedEvolutionItem(evolutionItem) : ''"
+			v-on:click = "( selectedView == 'select' ) ? setSelectedEvolutionItem(index) : ''"
 			>
 				<div class = "item-meta">
 					
-					<p class = "name"> {{ evolutionItem.name }} </p>
-						
-						<tr></tr>
+					<p class = "name"> {{ evolutionItem.name }}</p>
 
 					<p class = "year"> {{ evolutionItem.year }} </p>
 
 				</div>
 
-			</div>
-		</div>
+			</li>
+		</ul>
 			
 
 	</div>
@@ -50,7 +63,11 @@
 			return {
 				selectedEvolutionItem: this.character.evolution[0],
 
-				selectedView: 'select'
+				selectedView: 'select',
+
+				pos: 0,
+
+				displayItemSelectMenu: false
 			}
 
 		},
@@ -59,9 +76,10 @@
 
 			getImage: getImageWithLocalPath,
 
-			setSelectedEvolutionItem: function (item) {
+			setSelectedEvolutionItem: function (index) {
 
-				this.selectedEvolutionItem = item;
+				this.pos = index;
+				this.selectedEvolutionItem = this.character.evolution[index];
 
 			},
 
@@ -69,12 +87,39 @@
 
 				if ( this.selectedView == 'grid') {
 					this.selectedView = 'select';
+					this.displayItemSelectMenu = false
 				}
 
 				else {
 					this.selectedView = 'grid';
 				}
+			},
 
+			navigatePrev: function () {
+			
+
+				if (this.pos == 0) {
+
+					this.pos = this.character.evolution.length - 1;
+				}
+
+				else {
+					this.pos--;
+				}
+
+				this.setSelectedEvolutionItem(this.pos);
+			},
+
+			navigateNext: function () {
+				if (this.pos == this.character.evolution.length - 1) {
+					this.pos = 0;
+				}
+
+				else {
+					this.pos++;
+				}
+
+				this.setSelectedEvolutionItem(this.pos);
 			}
 
 		}

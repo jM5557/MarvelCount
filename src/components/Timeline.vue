@@ -1,7 +1,5 @@
 <template>
 	<div id = "timeline-wrapper">
-		<SearchBar :arrayToSearch = "movieList" propToSearchBy = "name"></SearchBar>
-
 		<button v-on:click="toggleView()" class = "toggle-view-btn">View: {{ (selectedView == 'grid-view') ? 'Grid' : 'Timeline' }} </button>
 
 		<ul :class = "selectedView">
@@ -20,12 +18,6 @@
 			</li>
 
 		</ul>
-
-		<TrailerModal :selectedMovie = "selectedMovie" 
-			:startPlaying = "trailerIsPlaying"
-
-			v-on:hide-player = "hidePlayer()"
-		></TrailerModal>
 	</div>
 </template>
 
@@ -35,7 +27,6 @@
 	import { getImageWithLocalPath } from './../lib/helpers.js';
 
 	import TimelineItem from './TimelineItem.vue';
-	import TrailerModal from './TrailerModal.vue';
 	import SearchBar from './SearchBar.vue';
 
 	export default {
@@ -61,14 +52,11 @@
 			setSelectedMovie: function (movie) {
 				this.selectedMovie = movie;
 				this.trailerIsPlaying = true;
-			},
 
-			hidePlayer: function () {
-				if ( this.trailerIsPlaying == false ) {
-					return;
-				}
-
-				this.trailerIsPlaying = false;
+				this.$emit('set-modal-meta', {
+					selectedMovie: movie,
+					trailerIsPlaying: true
+				});
 			},
 
 			toggleView: function () {
@@ -86,9 +74,7 @@
 		},
 
 		components: {
-			TimelineItem,
-			TrailerModal,
-			SearchBar
+			TimelineItem
 		}
 	}
 </script>

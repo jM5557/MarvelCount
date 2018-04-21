@@ -20,6 +20,16 @@
 	export default {
 		name: 'trailer-modal',
 
+		/* 
+		*
+		* Two properties passed down from parent.
+		*
+		* `selectedMovie` Object the movie who's trailer is being played
+		*
+		* `startPlaying` Boolean determines if player modal should be opened
+		*
+		*/
+
 		props: ['selectedMovie', 'startPlaying'],
 
 		data () {
@@ -29,12 +39,17 @@
 		},
 
 		methods: {
+			
 
 			hidePlayer: function () {
 				if ( this.startPlaying ) {
 
 					this.$emit('hide-player');
 
+					return;
+
+				} else {
+					return;
 				}
 			},
 

@@ -34,7 +34,12 @@
 					{{ seconds }}
 				</p>
 			</div>
+
+			<button v-on:click="playTrailer(film, !trailerIsPlaying)" class = 'trailer-btn'>Latest Trailer</button>
+			
 		</div>
+
+		<NavigationBar></NavigationBar>
 
 		<div class = "scroll-notify center">
 			<p>scroll</p>
@@ -44,6 +49,9 @@
 </template>
 
 <script>
+	import TrailerModal from './TrailerModal.vue';
+	import NavigationBar from './NavigationBar.vue';
+
 	export default {
 		name: 'countdown-timer',
 
@@ -53,7 +61,23 @@
 			return {
 				currentTime: Math.trunc((new Date()).getTime() / 1000),
 
-				endTime: Math.trunc(Date.parse(this.endDate) / 1000)
+				endTime: Math.trunc(Date.parse(this.endDate) / 1000),
+
+
+
+				trailerIsPlaying: false
+			}
+		},
+
+		methods: {
+
+			playTrailer: function (film, trailerIsPlaying) {
+				
+
+				this.$emit('set-modal-meta', {
+					selectedMovie: film,
+					trailerIsPlaying: trailerIsPlaying
+				} );
 			}
 		},
 
@@ -81,6 +105,11 @@
 			window.setInterval(() => {
 		        this.currentTime = Math.trunc((new Date()).getTime() / 1000);
 		    }, 1000);
+		},
+
+		components: {
+			TrailerModal,
+			NavigationBar
 		}
 	}
 </script>
