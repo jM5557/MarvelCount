@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-   	<CountdownTimer endDate = "April 27, 2018" :film = "countDownFilm" v-on:set-modal-meta = "setModalMeta"></CountdownTimer>
+   	<CountdownTimer endDate = "April 27, 2018" 
+      :film = "countDownFilm" 
+      v-on:set-modal-meta = "setModalMeta"
+      :ticketsUrl = "'https://www.fandango.com/avengers-infinity-war-199925/movie-times'"
+    ></CountdownTimer>
 
-  	<h2 class = "page-name">
+  	<h2 class = "page-name" id = "timeline-main">
   		Timeline
   	</h2>
 

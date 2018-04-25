@@ -6,8 +6,7 @@
 		<div id = "menu-content-wrapper" :class = "displayMenu ? 'on' : 'off'">
 
 			<a href = "/comparisons.html">Comparisons</a>
-			<a href="/evolution.html">Evolution</a>
-			<a href="/about">About</a>
+			<a href="/about.html">About</a>
 		
 		</div>
 

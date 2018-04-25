@@ -1,5 +1,6 @@
 @import './partials/reset';
 @import './partials/variables';
+@import './partials/animations';
 
 @import url('https://fonts.googleapis.com/css?family=Fjalla+One|Archivo+Black|Karla');
 
@@ -186,7 +187,7 @@ tr {
 	}
 
 	#timer-inner-wrapper {
-		div {
+		div:not(.timer-content) {
 			display: inline-block;
 			margin: 7.5px 15px;
 			text-align: left;
@@ -238,6 +239,28 @@ tr {
 				}
 			}
 		}
+
+		&.timer-warning {
+			div {
+
+				.num {
+					
+
+					@include warningAnimation ();
+				}
+			}
+		}
+
+		.get-tickets-link {
+			background-color: purple;
+			font-family: $fontHeavy;
+			font-size: 1.75rem;
+			padding: 20px;
+			display: block;
+			text-align: center;
+			box-shadow: 0px 5px 25px 5px #111;
+			border-radius: 2px;
+		}
 	}
 
 	div.scroll-notify {
@@ -259,6 +282,21 @@ tr {
 		margin: auto auto;
 		text-shadow: 1px 1px 1px #111;
 		text-transform: uppercase;
+	}
+
+	.twitter-share-button,
+	.reddit-icon {
+		height: 35px;
+		width: 35px;
+		display: block;
+		position: absolute;
+		bottom: 45px;
+		right: 25px;
+	}
+
+	.reddit-icon {
+		position: absolute;
+		bottom: 90px;
 	}
 
 	@media all and (min-device-width: 375px) 
@@ -303,13 +341,16 @@ tr {
 
 .scroll-notify {
 	position: absolute;
-	bottom: 5vh;
+	bottom: 6vh;
 	left: 0px;
 	right: 0px;
 	display: block;
 	width: 100px;
 	margin: auto;
 	text-align: center;
+	cursor: pointer;
+
+	@include bounceAnimation ();
 
 	@media all and (min-device-width: 375px) 
 	and (max-device-width: 812px) 
@@ -334,7 +375,7 @@ tr {
 
 	.scroll-icon {
 		width: 45px;
-		height: 55px;
+		height: 35px;
 		background: url('./../assets/images/arrow-down.png') no-repeat center center;
 		background-size: contain;
 		margin: auto;
@@ -388,7 +429,8 @@ tr {
 	li {
 			background-position: top 0px center;
 			background-repeat: no-repeat;
-			background-size: cover;color: #fefefe;
+			background-size: cover;
+			color: #fefefe;
 			text-align: center;
 
 			border-radius: 2px;
@@ -421,14 +463,16 @@ tr {
 	ul.timeline-view {
 		display: block;
 		padding-top: 25px;
+		max-width: 900px;
+		margin: auto;
 
 		li {
 			display: block;
 			margin-top: 15px;
 			margin-bottom: 15px;
-			width: 85%;
+			width: 65%;
 			max-width: 350px;
-			padding: 250px 2% 250px 2%;
+			padding: 150px 2% 150px 2%;
 
 			div:after {
 				content: "";
@@ -508,16 +552,17 @@ tr {
 
 		li {
 			display: inline-block;
-			padding-top: 155px;
-			padding-bottom: 155px;
-			width: 30%;
-			min-width: 255px;
+			padding-top: 105px;
+			padding-bottom: 105px;
+			width: 25%;
+			min-width: 225px;
 			margin: 15px;
 			vertical-align: middle;
+			height: 50px; 
 
 			h3 {
 				font-size: 1.45rem;
-				line-height: 1.35rem;
+				line-height: 1.75rem;
 			}
 
 			@media all and (max-width: $bp_mobile_sm) {
@@ -557,6 +602,8 @@ tr {
 	z-index: 999;
 	background-color: $bodyColor;
 
+	@include fadeIn (0, 0.5);
+
 	.iframe-wrapper {
 		position: absolute;
 		top: 0px;
@@ -565,6 +612,8 @@ tr {
 		width: calc(100% - 200px);
 		left: 200px;
 		z-index: 4;
+
+		@include slideFromBottom;
 
 		iframe {
 			display: block;
@@ -590,6 +639,9 @@ tr {
 		text-align: center;
 		box-sizing: border-box;
 		z-index: 3;
+		background-color: #111;
+
+		@include slideFromLeftAnimation;
 
 		h2 {
 			font-size: 1.65rem;
@@ -610,8 +662,14 @@ tr {
 			font-size: 0.85rem;
 		}
 
+		img {
+			max-width: 90%;
+			display: block;
+			margin: 15px auto;
+		}
+
 		.hide-player {
-			margin: 45px auto;
+			margin: 15px auto;
 			background-color: purple;
 			color: #fefefe;
 			box-shadow: 0px 5px 20px 5px #111;
@@ -632,6 +690,10 @@ tr {
 			bottom: 0px;
 			height: 20%;
 			width: 100%;
+
+			img {
+				display: none;
+			}
 
 			tr {
 				display: none;
@@ -711,12 +773,12 @@ tr {
 
 	.comp-item {
 		display: inline-block;
-		height: 400px;
+		height: 450px;
 		max-width: 450px;
 		width: 45%;
 		background-size: cover;
 		background-repeat: no-repeat;
-		background-position: center center;
+		background-position: top 0px center;
 		margin: 5px;
 		box-shadow: 3px 5px 25px 15px #111;
 		border-radius: 3px;
@@ -739,7 +801,12 @@ tr {
 
 	.name {
 		font-size: 3.45rem;
-		padding: 15px;
+		padding: 22px 15px;
+	}
+
+	.alias {
+		padding: 5px 15px 22px 15px;
+		font-size: 1.25rem;
 	}
 
 	ul {
@@ -780,10 +847,14 @@ tr {
 .evolution-item-wrapper {
 	padding-top: 5px;
 	position: relative;
-	margin: 25px auto 25px auto;
+	margin: 25px auto 125px auto;
 	padding-bottom: 85px;
 	height: 28vw;
 	min-height: 350px;
+
+	&.select {
+		margin-bottom: 25px;
+	}
 
 	.toggle-view-btn {
 		z-index: 3;
@@ -810,6 +881,11 @@ tr {
 		border-radius: 4px;
 		margin: auto;
 		z-index: 1;
+
+
+		&.loading {
+			@include fadeIn(0, 0.5);
+		}
 
 		.year {
 			position: absolute;
@@ -1114,6 +1190,21 @@ footer {
 			margin: auto;
 			margin-bottom: 12.5px;
 		}
+
+		&.social {
+			
+			h5, h6 {
+				display: block;
+				text-align: center;
+				margin: auto;
+				padding: 7.5px 5px;
+			}
+
+			h5 {
+				font-size: 1.45rem;
+				margin-top: 20px;
+			}
+		}
 	}
 
 	#disclaimer {
@@ -1168,7 +1259,8 @@ footer {
 	top: 25px;
 	left: 15px;
 	box-shadow: 0px 10px 25px 5px #111;
-	max-height: 65vh;
+	max-height: 40vh;
+	min-height: 150px;
 	overflow-y: auto;
 
 	li.selected {
@@ -1193,6 +1285,59 @@ footer {
 	}
 }
 
+.static-body-content {
+	max-width: 600px;
+	margin: 150px auto auto auto;
+	display: block;
+	line-height: 1.85rem;
+	padding: 15px;
+
+	p {
+		padding-top: 8px;
+		padding-bottom: 8px;
+		display: block;
+		max-width: 500px;
+		margin: auto;
+	}
+
+	.developed-by {
+		text-align: center;
+		color: gray;
+		font-family: $fontMid;
+		margin-top: 20px;
+	}
+
+	.mail-to {
+		text-align: center;
+		color: purple;
+		font-family: $fontMid;
+		margin-top: 20px;
+		font-size: 1.85rem;
+	}
+
+	@media all and (max-width: $bp_mobile) {
+
+		.developed-by {
+			font-size: 0.95rem;
+		}
+
+		.mail-to {
+			font-size: 1.25rem;
+		}
+
+	}
+}
+
+.disclaimer {
+	font-family: $fontHeavy;
+	margin: auto auto;
+	text-align: left;
+	cursor: default;
+	font-size: 0.85rem;
+	line-height: 1.5rem;
+	padding: 5px 2.5px;
+}
+
 .marvel-site-icon {
 	background: url('./../assets/images/marvel-site-icon.png') no-repeat center center;
 	background-size: cover;
@@ -1210,5 +1355,10 @@ footer {
 
 .twitter-icon {
 	background: url('./../assets/images/twitter-icon.png') no-repeat center center;
+	background-size: auto 60%;
+}
+
+.reddit-icon {
+	background: url('./../assets/images/reddit-icon.png') no-repeat center center;
 	background-size: auto 60%;
 }

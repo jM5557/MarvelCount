@@ -5,6 +5,8 @@
 				<tr></tr>
 			<h5>{{ selectedMovie.releaseDate }}</h5>
 
+			<img :alt = "selectedMovie.name + ' Poster' " :src = "getImageWithLocalPath(selectedMovie.poster)" />  
+
 			<button class= "hide-player" v-on:click = "hidePlayer()">
 				Return to TimeLine
 			</button>
@@ -17,6 +19,8 @@
 </template>
 
 <script>
+	import { getImageWithLocalPath } from './../lib/helpers.js';
+
 	export default {
 		name: 'trailer-modal',
 
@@ -39,7 +43,7 @@
 		},
 
 		methods: {
-			
+
 
 			hidePlayer: function () {
 				if ( this.startPlaying ) {
@@ -99,7 +103,9 @@
 				}
 
 				return 'https://youtube.com/embed/' + this.selectedMovie.trailerUrl.slice(trailerStartIndex, trailerEndIndex);
-			}
+			},
+
+			getImageWithLocalPath: getImageWithLocalPath
 
 		}
 	}

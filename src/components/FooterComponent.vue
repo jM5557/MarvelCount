@@ -57,6 +57,14 @@
 					</a>
 				</li>
 			</ul>
+			<p>
+				<a href="https://twitter.com/MarvelStudios/status/988611114656190464">
+					<h5>
+						Thanos Demands Your Silence
+					</h5>
+					<h6>Don't Spoil It For Others.</h6>
+				</a>
+			</p>
 		</div>
 
 		<div id="disclaimer">

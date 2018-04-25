@@ -1,4 +1,5 @@
-import Vue from 'vue'
+import Vue from 'vue';
+import vueScrollTo from 'vue-scrollto';
 
 import NavigationBar from './components/NavigationBar.vue';
 
@@ -10,6 +11,8 @@ import FooterComponent from './components/FooterComponent.vue';
 
 import { renderComponentIfElementExists } from './lib/helpers.js';
 import './scss/style.scss';
+
+Vue.use(vueScrollTo);
 
 
 renderComponentIfElementExists ('app-nav', NavigationBar);

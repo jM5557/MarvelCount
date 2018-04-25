@@ -9,7 +9,10 @@ export default {
 
 			alias: 'Tony Stark',
 
-			movies: ['Iron Man', 'Iron Man 2'],
+			movies: ['Iron Man', 'Iron Man 2', 
+				'Marvel\'s The Avengers', 'Iron Man 3', 
+				'Avengers: Age of Ultron', 'Captain America: Civil War',
+				'Spider-Man: Homecoming', 'Avengers: Infinity War'],
 
 			comparison: {
 				film: {
@@ -44,6 +47,61 @@ export default {
 
 					imageUrl: "iron-man-1-e2.jpg"
 
+				},
+
+				{
+					id: 3,
+
+					name: "Marvel's The Avengers",
+
+					year: "2012",
+
+					imageUrl: "iron-man-1-e3.jpg"
+				},
+				{
+					id: 4,
+
+					name: "Iron Man 3",
+
+					year: "2013",
+
+					imageUrl: "iron-man-1-e4.jpg"
+				},
+				{
+					id: 5,
+
+					name: "Avengers: Age of Ultron",
+
+					year: "2015",
+
+					imageUrl: "iron-man-1-e5.jpg"
+				},
+				{
+					id: 6,
+
+					name: "Captain America: Civil War",
+
+					year: "2016",
+
+					imageUrl: "iron-man-1-e6.jpg"
+				},
+				{
+					id: 7,
+
+					name: "Spider-Man: Homecoming",
+
+					year: "2017",
+
+					imageUrl: "iron-man-1-e7.jpg"
+				},
+				{
+					id: 8,
+
+					name: "Avengers: Infinity War",
+
+					year: "2018",
+
+					imageUrl: "iron-man-1-e8.jpg"
 				}
 			]
 		},
@@ -55,7 +113,12 @@ export default {
 
 			alias: 'Thor Odinson',
 
-			movies: ['Thor', 'Thor: The Dark World', 'Thor: Ragnarok'],
+			movies: [
+				'Thor', 'Marvel\'s The Avengers',
+				'Thor: The Dark World', 'Avengers: Age of Ultron',
+				'Doctor Strange', 'Thor: Ragnarok', 
+				'Avengers: Infinity War'
+			],
 
 			comparison: {
 
@@ -106,7 +169,12 @@ export default {
 
 			alias: 'Steve Rodgers',
 
-			movies: [ 'Captain America: The First Avenger', 'Captain America: The Winter Soldier', 'Captain America: Civil War' ],
+			movies: [ 
+				'Captain America: The First Avenger', 'Marvel\'s The Avengers',
+				'Captain America: The Winter Soldier', 'Avengers: Age of Ultron',
+				'Captain America: Civil War', 
+				'Avengers: Infinity War'
+			 ],
 
 			comparison: {
 
@@ -149,6 +217,143 @@ export default {
 				}
 			]
 
+		},
+
+		{
+			id: 4,
+
+			name: 'Hulk',
+
+			alias: 'Bruce Banner',
+
+			movies: [
+
+				'The Incredible Hulk', 
+				'Marvel\'s The Avengers', 
+				'Avengers: Age of Ultron', 
+				'Thor: Ragnarok', 
+				'Avengers: Infinity War'
+			],
+
+			comparison: {
+
+				film: {
+
+					caption: '',
+					imageUrl: 'hulk-1-ca.png',
+
+				},
+
+				comic: {
+
+					caption: '',
+					imageUrl: 'hulk-1-cb.jpg'
+
+				}
+
+			}
+		},
+
+		{
+			id: 5,
+
+			name: 'Hawkeye',
+
+			alias: 'Clint Barton',
+
+			movies: [
+				'Thor',
+				'Marvel\'s The Avengers',
+				'Avengers: Age of Ultron',
+				'Captain America: Civil War'
+			],
+
+			comparison: {
+
+				film: {
+
+					caption: '',
+					imageUrl: 'hawkeye-1-ca.jpg'
+
+				},
+
+				comic: {
+
+					caption: '',
+					imageUrl: 'hawkeye-1-cb.jpg'
+
+				}
+
+			},
+
+		},
+
+		{
+			id: 6,
+
+			name: 'Black Widow',
+
+			alias: 'Natalia Romanoff',
+
+			movies: ['Iron Man 2',
+				'Marvel\'s The Avengers',
+				'Captain America: The Winter Soldier',
+				'Captain America: Civil War',
+				'Avengers: Age of Ultron',
+				'Avengers: Infinity War'
+			],
+
+			comparison: {
+
+				film: {
+
+					caption: '',
+					imageUrl: 'black-widow-1-ca.jpg'
+
+				},
+
+				comic: {
+
+					caption: '',
+					imageUrl: 'black-widow-1-cb.jpg'
+
+				}
+
+			}
+		},
+
+		{
+			id: 7,
+
+			name: 'Loki',
+
+			alias: 'Loki Odinson',
+
+			movies: [ 
+				'Thor',
+				'Marvel\'s The Avengers', 
+				'Thor: The Dark World',
+				'Thor: Ragnarok',
+				'Avengers: Infinity War'
+			],
+
+			comparison: {
+
+				film: {
+
+					caption: '',
+					imageUrl: 'loki-1-ca.jpg'
+
+				},
+
+				comic: {
+
+					caption: '',
+					imageUrl: 'loki-1-cb.jpg'
+
+				}
+
+			}
 		}
 	]
 }

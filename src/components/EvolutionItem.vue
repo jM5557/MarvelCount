@@ -1,6 +1,6 @@
 <template>
 	
-	<div class = "evolution-item-wrapper">
+	<div :class = "(selectedView == 'select') ? 'evolution-item-wrapper select' : 'evolution-item-wrapper'" >
 		<button class = "toggle-view toggle-view-btn" v-on:click = "toggleView()">
 			View: {{ (selectedView == 'select') ? 'Select' : 'Grid' }}
 		</button>
@@ -11,7 +11,7 @@
 			v-on:click = "displayItemSelectMenu = !displayItemSelectMenu"
 		></button>
 		
-		<div v-if = "selectedView == 'select'" :style = "'background-image: url(\'' + getImage(selectedEvolutionItem.imageUrl) + '\');'" class="selected-item">
+		<div v-if = "selectedView == 'select'" :style = "'background-image: url(\'' + getImage(selectedEvolutionItem.imageUrl) + '\');'" :class="imageClass">
 
 			<span class = "year">{{ selectedEvolutionItem.year }}</span>
 
@@ -67,7 +67,9 @@
 
 				pos: 0,
 
-				displayItemSelectMenu: false
+				displayItemSelectMenu: false,
+
+				imageClass: 'selected-item'
 			}
 
 		},
@@ -81,6 +83,11 @@
 				this.pos = index;
 				this.selectedEvolutionItem = this.character.evolution[index];
 
+				this.imageClass = 'selected-item loading';
+
+				window.setTimeout(() => {
+					this.imageClass = 'selected-item';
+				}, 500);
 			},
 
 			toggleView: function () {

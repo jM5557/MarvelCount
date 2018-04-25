@@ -6,7 +6,7 @@ const getImageWithLocalPath = function (image_filename, sub_folder) {
 		return require('./../assets/images/' + image_filename);
 	}
 
-	return require('./../assets/images/' + image_filename + sub_folder);
+	return require('./../assets/images/' + sub_folder + image_filename );
 }
 
 /* 

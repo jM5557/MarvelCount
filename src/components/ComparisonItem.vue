@@ -14,6 +14,10 @@
 				{{ item.name }}
 			</p>
 
+			<p class = "main-stats alias">
+				{{ item.alias }}
+			</p>
+
 			<ul>
 				<li v-for = "movie in item.movies" class = "movies main-stats">
 					{{ movie }}

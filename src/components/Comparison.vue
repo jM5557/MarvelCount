@@ -4,8 +4,11 @@
 		<div id = "comparison-menu-toggle" v-on:click = "displayMenu" :class = "menuIsVisible ? 'on hamburger-menu' : 'hamburger-menu'"></div>
 
 		<ul id = "comparison-menu" v-if="menuIsVisible" class = "toggle-menu">
-			<li v-for="character in characterList" v-on:click="setSelectedCharacter(character)" :class = "(character == selectedCharacter) ? 'selected' : ''">
+			<li v-for="(character, index) in characterList" v-on:click="setSelectedCharacter(character)" :class = "(character == selectedCharacter) ? 'selected' : ''">
 				{{ character.name }}
+			</li>
+			<li>
+				<p class = "disclaimer">More Heroes Coming Soon...</p>
 			</li>
 		</ul>
 
